@@ -20,110 +20,33 @@ const equalBtn = document.querySelector("#equal")
 const clearBtn = document.querySelector("#clear")
 
 let num1 = "";
-let num2 =  "";
+let num2 = "";
 let operator = "";
 const display = document.querySelector("#display");
 
-
-oneBtn.addEventListener("click", () => {
+// add number function
+function addNumber(value){
   if (!operator){
-    num1 = "1";
+    num1 = value;
     display.value = num1;
   } else {
-    num2 = "1";
+    num2 = value;
     display.value = num1 + operator + num2;
   }
-  });
+}
 
-twoBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "2";
-    display.value = num1;
-  } else {
-    num2 = "2";
-    display.value = num1 + operator + num2;
-  }
-  });
+// number btns
 
-threeBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "3";
-    display.value = num1;
-  } else {
-    num2 = "3";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-fourBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "4";
-    display.value = num1;
-  } else {
-    num2 = "4";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-fiveBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "5";
-    display.value = num1;
-  } else {
-    num2 = "5";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-sixBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "6";
-    display.value = num1;
-  } else {
-    num2 = "6";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-sevenBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "7";
-    display.value = num1;
-  } else {
-    num2 = "7";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-eightBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "8";
-    display.value = num1;
-  } else {
-    num2 = "8";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-nineBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "9";
-    display.value = num1;
-  } else {
-    num2 = "9";
-    display.value = num1 + operator + num2;
-  }
-  });
-
-zeroBtn.addEventListener("click", () => {
-  if (!operator){
-    num1 = "0";
-    display.value = num1;
-  } else {
-    num2 = "0";
-    display.value = num1 + operator + num2;
-  }
-})
+oneBtn.addEventListener("click", () => addNumber("1"));
+twoBtn.addEventListener("click", () => addNumber("2"));
+threeBtn.addEventListener("click", () => addNumber("3"));
+fourBtn.addEventListener("click", () => addNumber("4"));
+fiveBtn.addEventListener("click", () => addNumber("5"));
+sixBtn.addEventListener("click", () => addNumber("6"));
+sevenBtn.addEventListener("click", () => addNumber("7"));
+eightBtn.addEventListener("click", () => addNumber("8"));
+nineBtn.addEventListener("click", () => addNumber("9"));
+zeroBtn.addEventListener("click", () => addNumber("0"))
 
 // operators
 
@@ -162,14 +85,18 @@ clearBtn.addEventListener("click",() => {
 });
 
 equalBtn.addEventListener("click", () => {
+  const n1 = parseFloat(num1);
+  const n2 = parseFloat(num2);
   let result =0;
 
-  if (operator === "+") result = num1 + num2
-  if (operator === "-") result = num1 - num2
-  if (operator === "%") result = num1 % num2
-  if (operator === "/") result = num1 / num2
-  if (operator === "*") result = num1 * num2
+  if (operator === "+") result = n1 + n2
+  if (operator === "-") result = n1 - n2
+  if (operator === "%") result = n1 % n2
+  if (operator === "/") result = n1 / n2
+  if (operator === "*") result = n1 * n2
 
   display.value = result;
-  num
-})
+  num1 = result.toString();
+  num2="";
+  operator="";
+});
