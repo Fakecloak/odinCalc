@@ -17,3 +17,5 @@ With hover effect:
 
 
 
+source to create your own calculator. Go! : 
+https://www.theodinproject.com/lessons/foundations-calculator
