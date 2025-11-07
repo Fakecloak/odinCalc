@@ -14,7 +14,8 @@ const subOperator = document.querySelector("#sub")
 const modulusOperator = document.querySelector("#modulus")
 const multiplyOperator = document.querySelector("#multiply")
 const divisonOperator = document.querySelector("#divison")
-const dotOperator = document.querySelector("#dot")
+const dotBtn = document.querySelector("#dot")
+const sqrtOperator = document.querySelector("#sqr")
 
 const equalBtn = document.querySelector("#equal")
 const clearBtn = document.querySelector("#clear")
@@ -27,10 +28,10 @@ const display = document.querySelector("#display");
 // add number function
 function addNumber(value){
   if (!operator){
-    num1 = value;
+    num1 += value;
     display.value = num1;
   } else {
-    num2 = value;
+    num2 += value;
     display.value = num1 + operator + num2;
   }
 }
@@ -47,6 +48,7 @@ sevenBtn.addEventListener("click", () => addNumber("7"));
 eightBtn.addEventListener("click", () => addNumber("8"));
 nineBtn.addEventListener("click", () => addNumber("9"));
 zeroBtn.addEventListener("click", () => addNumber("0"))
+dotBtn.addEventListener("click",()=> addNumber("."))
 
 // operators
 
@@ -75,6 +77,12 @@ multiplyOperator.addEventListener("click",()=>{
   display.value =num1 +operator;
 });
 
+sqrtOperator.addEventListener("click",()=>{
+  operator = "√";
+  display.value =num1 +operator;
+});
+
+
 // extras 
 
 clearBtn.addEventListener("click",() => {
@@ -94,6 +102,7 @@ equalBtn.addEventListener("click", () => {
   if (operator === "%") result = n1 % n2
   if (operator === "/") result = n1 / n2
   if (operator === "*") result = n1 * n2
+  if (operator === "√") result = Math.sqrt(n1) 
 
   display.value = result;
   num1 = result.toString();

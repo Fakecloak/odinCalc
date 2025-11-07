@@ -4,35 +4,38 @@
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: lightcoral;
+    background: white;
 }
 
 .container h2{
+    color: red;
     text-align: center;
 }
 
 .container{
     border-radius: 10px;
     padding: 20px;
-    background-color: lightblue;
+    background-color: #0a0a1a;
     width:300px;
     /* height: 240px; */
     box-shadow: 0 0 10px black;
    
 }
+
 .display{
+    display: flex;
     margin-bottom: 15px;
 }
-
 .display input {
     width: 100%;
-    text-align: left;
+    text-align: right;
     height: 50px;
     font-size: 24px;
     border: none;
     padding-right:10px;
-    border-radius: 5px;
+    border-radius:5px;
 }
+
 .numbers,
 .operators,
 .extras {
@@ -43,16 +46,23 @@
     margin-bottom: 15px;
 }
 
+#zero  {
+    flex: 0 0 calc(66.66% - 10px);
+} 
+
+.operators button {
+    flex: 0 0 calc(50% - 10px);
+    color: red;
+}
+
 .extras button {
     background: orange;
-    color: black;
+    color: white;
     display: flex;
     flex:1;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-
-
 }
 
 button {
@@ -68,8 +78,35 @@ button {
     border-radius: 5px;
 }
 
-button:hover{
-    background-color: deepskyblue;
-    color:white;
+.numbers button {
+    background-color: #ffffff;
+    color: black;
 }
 
+.operators button {
+    background-color: #ff5c5c;
+    color: #ffffff;
+}
+
+/* ------------- hover effects ---------------- */
+
+
+
+
+.numbers button:hover{
+    background-color: black;
+    color:white;
+    border: 1px solid white;
+} 
+
+.operators button:hover {
+    background-color: white;
+    color: #ff6666;
+    border: 1px solid #ff6666;
+}
+
+.extras button:hover {
+    background-color: white;
+    color: orange;
+    border: 1px solid orange;
+}
