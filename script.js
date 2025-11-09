@@ -94,9 +94,16 @@ equalBtn.addEventListener("click", () => {
   if (operator === "+") result = n1 + n2
   if (operator === "-") result = n1 - n2
   if (operator === "%") result = n1 % n2
-  if (operator === "/") result = n1 / n2
   if (operator === "*") result = n1 * n2
-  if (operator === "√") result = Math.sqrt(n1) 
+  if (operator === "√") result = Math.sqrt(n1)
+    if (operator === "/"){
+      if(n2===0){
+        display.value="Error: Div by 0";
+        [num1, num2] = ["", ""];
+        operator="";
+        return;
+      }
+    } result = n1 / n2
 
   display.value = result;
   num1 = result.toString();
