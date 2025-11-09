@@ -1,10 +1,13 @@
+body {
+    background-image: url('rexy.png')
+}
 .flex-box{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: white;
+    
 }
 
 .container h2{
@@ -46,12 +49,12 @@
     margin-bottom: 15px;
 }
 
-#zero  {
-    flex: 0 0 calc(66.66% - 10px);
-} 
+/* #zero  {
+    flex: 0 0 calc(33.33% - 10px);
+}  */
 
 .operators button {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 calc(33.33% - 10px);
     color: red;
 }
 
@@ -88,6 +91,9 @@ button {
     color: #ffffff;
 }
 
+#backspace {
+    background: orange;
+}
 /* ------------- hover effects ---------------- */
 
 
