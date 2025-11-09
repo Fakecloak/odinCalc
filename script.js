@@ -8,6 +8,7 @@ const sevenBtn = document.querySelector("#seven")
 const eightBtn = document.querySelector("#eight")
 const nineBtn = document.querySelector("#nine")
 const zeroBtn = document.querySelector("#zero")
+const backspaceBtn = document.querySelector("#backspace")
 
 const addOperator = document.querySelector("#add")
 const subOperator = document.querySelector("#sub")
@@ -100,6 +101,25 @@ function evaluate() {
   operator="";
   display.value = num1;
 }
+
+// backspace btn 
+backspaceBtn.addEventListener("click",() => {
+  if (num1){
+    num1 = num1.slice(0,-1);
+  }else if(num2){
+    num2 = num2.slice(0,-1);
+  }else if (operator){
+    operator = "";
+  }else {
+    // If result or error is showing, clear everything
+    num1 = "";
+    num2 = "";
+    operator = "";
+    display.value = "";
+  }
+  display.value = num1+operator+num2 || "0";
+});
+
 // clear btn
 clearBtn.addEventListener("click",() => {
   num1 = "";
