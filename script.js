@@ -27,6 +27,13 @@ const display = document.querySelector("#display");
 
 // add number function
 function addNumber(value){
+  
+  //to avoid Multiple Decimals
+  if (value === "."){
+    if(!operator && num1.includes(".")) return;
+    if(operator && num2.includes(".")) return;
+  } 
+
   if (!operator){
     num1 += value;
     display.value = num1;
@@ -88,7 +95,7 @@ sqrtOperator.addEventListener("click",()=>{
 clearBtn.addEventListener("click",() => {
   num1 = "";
   num2 = "";
-  operator = "";
+  operator = null;
   display.value="";
 });
 
