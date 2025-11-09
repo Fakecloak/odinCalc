@@ -57,28 +57,50 @@ zeroBtn.addEventListener("click", () => addNumber("0"))
 dotBtn.addEventListener("click",()=> addNumber("."))
 
 
-// operator function
-function setOperator(op){
-  if(!operator ){
-    operator = op;
-    display.value = num1 + operator;
-  } else if (operator && !num2){
-    operator = op;
-    display.value = num1 + operator;
-    }
+// operator function with opeartor btns
+function setOperator(op) {
+  if (num1 && num2) {
+    evaluate(); // auto-evaluate before chaining
+  }
+  operator = op;
+  display.value = num1 + operator;
 }
 
-// opeartor btns
 addOperator.addEventListener("click", () => setOperator("+"));
 subOperator.addEventListener("click", () => setOperator("-"));
-modulusOperator.addEventListener("click", () => setOperator("%"));
 divisonOperator.addEventListener("click", () => setOperator("/"));
 multiplyOperator.addEventListener("click", () => setOperator("*"));
 sqrtOperator.addEventListener("click", () => setOperator("√"));
+modulusOperator.addEventListener("click",() => setOperator("%"));
 
+function evaluate() {
+  const n1 = parseFloat(num1);
+  const n2 = parseFloat(num2);
+  let result =0;
 
-// extras 
+  if (isNaN(n1) || isNaN(n2)) return;
 
+  if (operator === "+") {result = n1 + n2;}
+  if (operator === "-") {result = n1 - n2;}
+  if (operator === "%") {result = n1 % n2;}
+  if (operator === "*") {result = n1 * n2;}
+  if (operator === "√") {result = Math.sqrt(n1)}
+  if (operator === "/"){
+    if(n2===0 || n2===""){
+      display.value="Error: Div by 0";
+      [num1, num2] = ["", ""];
+      operator="";
+      return;
+    }
+    result = n1 / n2;
+  }
+
+  num1 = result.toString();
+  num2="";
+  operator="";
+  display.value = num1;
+}
+// clear btn
 clearBtn.addEventListener("click",() => {
   num1 = "";
   num2 = "";
@@ -86,27 +108,11 @@ clearBtn.addEventListener("click",() => {
   display.value="";
 });
 
+// equal btn
 equalBtn.addEventListener("click", () => {
-  const n1 = parseFloat(num1);
-  const n2 = parseFloat(num2);
-  let result =0;
-
-  if (operator === "+") result = n1 + n2
-  if (operator === "-") result = n1 - n2
-  if (operator === "%") result = n1 % n2
-  if (operator === "*") result = n1 * n2
-  if (operator === "√") result = Math.sqrt(n1)
-    if (operator === "/"){
-      if(n2===0){
-        display.value="Error: Div by 0";
-        [num1, num2] = ["", ""];
-        operator="";
-        return;
-      }
-    } result = n1 / n2
-
-  display.value = result;
-  num1 = result.toString();
-  num2="";
-  operator="";
+  if (num1 && operator && num2){
+    evaluate(); //callback function
+  }else {
+    display.value=num1;
+  }
 });
