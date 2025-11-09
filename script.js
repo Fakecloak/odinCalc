@@ -44,7 +44,6 @@ function addNumber(value){
 }
 
 // number btns
-
 oneBtn.addEventListener("click", () => addNumber("1"));
 twoBtn.addEventListener("click", () => addNumber("2"));
 threeBtn.addEventListener("click", () => addNumber("3"));
@@ -57,37 +56,25 @@ nineBtn.addEventListener("click", () => addNumber("9"));
 zeroBtn.addEventListener("click", () => addNumber("0"))
 dotBtn.addEventListener("click",()=> addNumber("."))
 
-// operators
 
-addOperator.addEventListener("click",()=>{
-  operator = "+";
-  display.value =num1 +operator;
-});
+// operator function
+function setOperator(op){
+  if(!operator ){
+    operator = op;
+    display.value = num1 + operator;
+  } else if (operator && !num2){
+    operator = op;
+    display.value = num1 + operator;
+    }
+}
 
-subOperator.addEventListener("click",()=>{
-  operator = "-";
-  display.value =num1 +operator;
-});
-
-modulusOperator.addEventListener("click",()=>{
-  operator = "%";
-  display.value =num1 +operator;
-});
-
-divisonOperator.addEventListener("click",()=>{
-  operator = "/";
-  display.value =num1 +operator;
-});
-
-multiplyOperator.addEventListener("click",()=>{
-  operator = "*";
-  display.value =num1 +operator;
-});
-
-sqrtOperator.addEventListener("click",()=>{
-  operator = "√";
-  display.value =num1 +operator;
-});
+// opeartor btns
+addOperator.addEventListener("click", () => setOperator("+"));
+subOperator.addEventListener("click", () => setOperator("-"));
+modulusOperator.addEventListener("click", () => setOperator("%"));
+divisonOperator.addEventListener("click", () => setOperator("/"));
+multiplyOperator.addEventListener("click", () => setOperator("*"));
+sqrtOperator.addEventListener("click", () => setOperator("√"));
 
 
 // extras 
