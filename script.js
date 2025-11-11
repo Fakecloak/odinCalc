@@ -1,3 +1,5 @@
+const display = document.querySelector("#display");
+
 const oneBtn = document.querySelector("#one")
 const twoBtn = document.querySelector("#two")
 const threeBtn = document.querySelector("#three")
@@ -24,13 +26,18 @@ const clearBtn = document.querySelector("#clear")
 let num1 = "";
 let num2 = "";
 let operator = "";
-const display = document.querySelector("#display");
+let resultDisplayed = false; 
 
 // add number function
 function addNumber(value){
+  if (resultDisplayed){
+    num1="";
+    num2="";
+    operator="";
+    resultDisplayed= false;
+  }
   
-  //to avoid Multiple Decimals
-  if (value === "."){
+  if (value === "."){ //to avoid Multiple Decimals
     if(!operator && num1.includes(".")) return;
     if(operator && num2.includes(".")) return;
   } 
@@ -61,7 +68,7 @@ dotBtn.addEventListener("click",()=> addNumber("."))
 // operator function with opeartor btns
 function setOperator(op) {
   if (num1 && num2) {
-    evaluate(); // auto-evaluate before chaining
+    evaluate(); // auto-evaluate before chaining i.e., (2+2 = 4) + 2
   }
   operator = op;
   display.value = num1 + operator;
@@ -73,6 +80,7 @@ divisonOperator.addEventListener("click", () => setOperator("/"));
 multiplyOperator.addEventListener("click", () => setOperator("*"));
 sqrtOperator.addEventListener("click", () => setOperator("√"));
 modulusOperator.addEventListener("click",() => setOperator("%"));
+
 
 function evaluate() {
   const n1 = parseFloat(num1);
@@ -91,6 +99,7 @@ function evaluate() {
       display.value="Error: Div by 0";
       [num1, num2] = ["", ""];
       operator="";
+      resultDisplayed= true;
       return;
     }
     result = n1 / n2;
@@ -100,6 +109,7 @@ function evaluate() {
   num2="";
   operator="";
   display.value = num1;
+  resultDisplayed= true;
 }
 
 // backspace btn 
@@ -135,5 +145,27 @@ equalBtn.addEventListener("click", () => {
     evaluate(); //callback function
   }else {
     display.value=num1;
+  }
+});
+
+
+// basic keyboard support 
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+
+  if (!isNaN(key)) {
+    addNumber(key); // digits 0–9
+  } else if (key === ".") {
+    addNumber(".");
+  } else if (key === "+" || key === "-" || key === "*" || key === "/" || key === "%") {
+    setOperator(key);
+  } else if (key === "Enter" || key === "=") {
+    equalBtn.click(); // simulate equal press
+  } else if (key === "Backspace") {
+    backspaceBtn.click();
+  } else if (key.toLowerCase() === "c") {
+    clearBtn.click();
+  } else if (key.toLowerCase() === "r") {
+    setOperator("√"); // simulate sqr root in R
   }
 });
