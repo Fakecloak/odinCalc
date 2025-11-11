@@ -1,10 +1,9 @@
 body {
-  background-image: url('rexy.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+    background-image: url("rexy.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
 }
-
 .flex-box{
     display: flex;
     justify-content: center;
