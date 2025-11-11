@@ -1,6 +1,7 @@
-A simple Basic calc using html css js
+A simple Basic calc using html css js - Created using only flexbox  
 
-Created using only flexbox  
+check here: https://fakecloak.github.io/odinCalc/
+
 
 features: 
 basic math calculations with sqr root. 
