@@ -106,11 +106,12 @@ function evaluate() {
 backspaceBtn.addEventListener("click",() => {
   if (num2){
     num2 = num2.slice(0,-1);
-  }else if(num1){
-    num1 = num1.slice(0,-1);
   }else if (operator){
     operator = "";
-  }else {
+  }else if(num1){
+    num1 = num1.slice(0,-1);
+  }
+  else {
     // If result or error is showing, clear everything
     num1 = "";
     num2 = "";
